@@ -1,18 +1,136 @@
-body{margin:0;padding:0;background:#ffe;font-size:12px;overflow:auto}#mainDiv{width:100%;height:100%}#loveHeart{float:left;width:670px;height:625px;border:2px solid var(--halloween-orange);box-shadow:0 0 10px var(--halloween-purple);margin-left:30px}#garden{width:100%;height:100%}#elapseClock{text-align:right;font-size:18px;margin-top:10px;margin-bottom:10px}#words{font-family:"sans-serif";width:500px;font-size:24px;color:#666;margin-top:20px}#messages{display:none;color:var(--halloween-orange);text-align:center}#elapseClock .digit{font-family:"digit";font-size:36px}#loveu{padding:5px;font-size:22px;margin-top:80px;margin-right:120px;text-align:right;display:none;color:var(--halloween-orange)}#loveu .signature{margin-top:10px;font-size:20px;font-style:italic}#clickSound{display:none}#code{float:left;width:440px;height:400px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}#code .string{color:#2a36ff}#code .keyword{color:var(--halloween-orange);text-shadow:0 0 5px var(--halloween-purple);font-size:28px;text-align:center;margin-top:20px}#code .placeholder{margin-left:15px}#code .space{margin-left:7px}#code .comments{color:#3f7f5f}#copyright{position:fixed;bottom:10px;left:0;width:100%;text-align:center;color:var(--halloween-orange);font-size:14px;z-index:999}#errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}#copyright a{color:#666}
+body{margin:0;padding:0;background:#ffe;font-size:12px;overflow:auto}#mainDiv{width:100%;height:100%}#loveHeart{float:left;width:670px;height:625px;border:2px solid var(--halloween-orange);box-shadow:0 0 10px var(--halloween-purple);margin-left:30px}#garden{width:100%;height:100%}#elapseClock{text-align:right;font-size:18px;margin-top:10px;margin-bottom:10px}#words{font-family:"sans-serif";width:500px;font-size:24px;color:#666;margin-top:20px}#messages{display:none;color:var(--halloween-orange);text-align:center}#elapseClock .digit{font-family:"digit";font-size:36px}#loveu{padding:5px;font-size:22px;margin-top:80px;margin-right:120px;text-align:right;display:none;color:var(--halloween-orange)}#loveu .signature{margin-top:10px;font-size:20px;font-style:italic}#clickSound{display:none}#code{float:left;width:440px;height:400px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}#code .string{color:#2a36ff}#code .keyword{color:var(--halloween-orange);text-shadow:0 0 5px var(--halloween-purple);font-size:25px;text-align:center;margin-top:20px}#code .placeholder{margin-left:15px}#code .space{margin-left:7px}#code .comments{color:#3f7f5f}#copyright{position:fixed;bottom:10px;left:0;width:100%;text-align:center;color:var(--halloween-orange);font-size:14px;z-index:999}#errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}#copyright a{color:#666}
 
-@keyframes float {
+/* 修改关键字的浮动动画 */
+@keyframes keyword-float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
 
 .keyword {
-    animation: float 3s ease-in-out infinite;
+    animation: keyword-float 3s ease-in-out infinite;
 }
-
 #content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
+
+/* 蝙蝠飞行动画 */
+.bats {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.bat {
+    position: absolute;
+    font-size: 24px;
+    animation: fly 10s infinite linear;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.bat:nth-child(1) { left: 10%; animation-delay: 0s; }
+.bat:nth-child(2) { left: 40%; animation-delay: 2s; }
+.bat:nth-child(3) { left: 70%; animation-delay: 4s; }
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, 50px) rotate(20deg);
+    }
+    50% {
+        transform: translate(0, 100px) rotate(0deg);
+    }
+    75% {
+        transform: translate(-100px, 50px) rotate(-20deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* 南瓜摇晃动画 */
+.pumpkins {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+}
+
+.pumpkin {
+    position: absolute;
+    font-size: 32px;
+    animation: bounce 2s infinite ease-in-out;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.pumpkin:nth-child(1) { left: 20%; animation-delay: 0s; }
+.pumpkin:nth-child(2) { left: 80%; animation-delay: 1s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* 幽灵飘动动画 */
+.ghosts {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+}
+
+.ghost {
+    position: absolute;
+    font-size: 28px;
+    animation: float 4s infinite ease-in-out;
+    opacity: 0.8;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.5s ease-in-out;
+}
+
+.ghost:nth-child(1) { left: 15%; animation-delay: 0s; }
+.ghost:nth-child(2) { left: 85%; animation-delay: 2s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-30px) rotate(-5deg); }
+}
+
+/* 底部装饰 */
+#bottom-decorations {
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+
+#bottom-decorations span {
+    margin: 0 20px;
+    opacity: 0.8;
+}
+
+
+
+/* 背景渐变 */
+body {
+    background: linear-gradient(
+        to bottom,
+        var(--halloween-black) 0%,
+        var(--halloween-purple) 100%
+    );
+    min-height: 100vh;
+}
+
+
+/* .bat, .pumpkin, .ghost {
+    z-index: 999;
+} */
